@@ -97,7 +97,9 @@ stage('Deploy staging') {
 
         stage('Approval') {
             steps {
+                timeout(time: 15, unit: 'MINUTES') {
                 input message: 'Do you like to proceed with the prod deployment?', ok: 'Yes!'
+             }
             }
         }
 
