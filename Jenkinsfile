@@ -95,6 +95,12 @@ stage('Deploy staging') {
             }
         }
 
+        stage('Approval') {
+            steps {
+                input message: 'Do you like to proceed with the prod deployment?', ok: 'Yes!'
+            }
+        }
+
         stage('Deploy prod') {
             agent {
                 docker {
